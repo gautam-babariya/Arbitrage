@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Symbol</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            color: #444;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            background: #f9f9f9;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: #0056d2;
+        }
+
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Remove button red color */
+        .remove-btn {
+            background: #e74c3c;
+        }
+
+        .remove-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <h2>Add Symbol</h2>
+
+        <form action="/add_symbol_post" method="POST">
+            <label>Symbol:</label>
+            <input type="text" name="symbol" required>
+
+            <label>Target Price:</label>
+            <input type="number" step="0.000001" name="target_price" required>
+
+            <label>Stop Price:</label>
+            <input type="number" step="0.000001" name="stop_price" required>
+
+            <label  style="display:none;">Orderid_delta</label>
+            <input  style="display:none;" type="text" name="Orderid_delta" value="0">
+
+            <label  style="display:none;">Orderid_coindcx</label>
+            <input  style="display:none;" type="text" name="Orderid_coindcx" value="0">
+
+            <button type="submit">Save</button>
+        </form>
+
+        <hr>
+
+        <h2>Remove Symbol</h2>
+
+        <form action="/remove_symbol_post" method="POST">
+            <label>Symbol Name:</label>
+            <input type="text" name="symbol" required>
+
+            <button type="submit" class="remove-btn">Remove</button>
+        </form>
+    </div>
+
+</body>
+</html>

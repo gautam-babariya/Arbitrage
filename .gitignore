@@ -1,0 +1,69 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+*.env
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# Flask instance files
+instance/
+*.db
+*.sqlite3
+
+# Logs
+*.log
+logs/
+gunicorn.error.log
+gunicorn.access.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Python build artifacts
+build/
+dist/
+*.egg
+*.egg-info/
+
+# Coverage
+.coverage
+htmlcov/
+.coverage.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Uploaded files (if any)
+uploads/
+static/uploads/
+
+# Nginx temp
+client_body_temp/
+
+# PyInstaller
+*.spec
+
+# Node modules (if React frontend is inside same repo)
+node_modules/
+

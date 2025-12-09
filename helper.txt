@@ -1,0 +1,5 @@
+coindcx position detail
+[{'id': 'c7e8d944-ba57-11f0-9010-4b1c8f21667d', 'pair': 'B-SIGN_USDT', 'active_pos': -3008.0, 'inactive_pos_buy': 0.0, 'inactive_pos_sell': 0.0, 'avg_price': 0.03774615026595, 'liquidation_price': 0.05383, 'locked_margin': 50.11026036884322, 'locked_user_margin': 56.8451732465, 'locked_order_margin': 0.0, 'take_profit_trigger': 0.02106, 'stop_loss_trigger': 0.053, 'leverage': 2.0, 'maintenance_margin': 1.7406091296, 'mark_price': 0.03857733, 'margin_type': 'isolated', 'settlement_currency_avg_price': 96.0, 'margin_currency_short_name': 'INR', 'updated_at': 1764748808441}]
+
+delta position detail
+{'entry_price': '0.01261000', 'size': -1}
