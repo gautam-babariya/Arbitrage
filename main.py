@@ -1,10 +1,17 @@
 from flask import Flask, request, jsonify, render_template
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 import threading
 from threading import Thread
 import agents.agent1_watcher.watcher as agent1
 from config.mongo import trading_collection
 import requests
 from agents.agent2_executor.executor import executor_worker
+from dotenv import load_dotenv
+
+load_dotenv()
+backendUrl = os.getenv("backendUrl")
 
 app = Flask(__name__)
 watcher_thread = None
@@ -125,12 +132,11 @@ def restart_watcher():
     data = list(trading_collection.find({}, {"_id": 0}))
     try:
         if len(data) == 0:
-            requests.get("http://127.0.0.1:5000/stop_watcher")
+            requests.get(f"{backendUrl}/stop_watcher")
             print("▶ Stop watcher...")
         else:
-            requests.get("http://127.0.0.1:5000/stop_watcher")
-            print("▶ Starting watcher...")
-            requests.get("http://127.0.0.1:5000/start_watcher")
+            requests.get(f"{backendUrl}/stop_watcher")
+            requests.get(f"{backendUrl}/start_watcher")
 
     except Exception as e:
         print("❌ Error restarting watcher:", e)

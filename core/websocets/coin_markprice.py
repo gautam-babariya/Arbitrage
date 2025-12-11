@@ -50,7 +50,6 @@ def start_socket(symbole_list):
     thread.start()
     print("▶ WebSocket started.")
 
-
 def stop_socket():
     """Stop websocket manually (only when this is called)."""
     stop_event.set()

@@ -32,10 +32,8 @@ def check_data():
             "Orderid_coindcx" : item["Orderid_coindcx"]
         }
     return result
-
+        
 def run(event):
-    global stop_event
-    stop_event = event
     symbole_list = check_data()
     if not symbole_list:
         print("Stopping watcher...")
@@ -43,11 +41,7 @@ def run(event):
         return 
     start_socket(symbole_list)
     
-    while 1:
-        if stop_event.is_set():
-            print("Stopping watcher...")
-            stop_socket()
-            return
+    while not event.is_set():
         symbols =  list(symbole_list.keys())
         for sym in symbols:
             if sym in market_prices:
@@ -64,6 +58,6 @@ def run(event):
                         
                         trading_collection.delete_one({"symbol": sym})
                         del symbole_list[sym]
-        for datu in data.values():
-            print(datu)
+        # for datu in data.values():
+        #     print(datu)
         time.sleep(1) 

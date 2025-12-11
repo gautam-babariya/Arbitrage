@@ -3,3 +3,19 @@ coindcx position detail
 
 delta position detail
 {'entry_price': '0.01261000', 'size': -1}
+
+ssh -i "C:\Users\gauta\Downloads\instance.pem" ubuntu@54.146.33.34
+
+cd ~/myflaskapp/Arbitrage
+source ~/myflaskapp/venv/bin/activate
+python3 main.py 
+
+sudo systemctl start myflaskapp
+sudo systemctl restart myflaskapp
+sudo systemctl stop myflaskapp
+sudo systemctl status myflaskapp
+
+sudo systemctl restart nginx
+sudo systemctl stop nginx
+sudo systemctl status nginx
+sudo nginx -t
