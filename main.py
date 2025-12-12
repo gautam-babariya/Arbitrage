@@ -8,7 +8,9 @@ import agents.agent1_watcher.watcher as agent1
 from config.mongo import trading_collection
 import requests
 from agents.agent2_executor.executor import executor_worker
+import agents.agent2_executor.executor as agent2
 from dotenv import load_dotenv
+from core.websocets.coin_markprice import stop_socket
 
 load_dotenv()
 backendUrl = os.getenv("backendUrl")
@@ -29,6 +31,9 @@ executor_thread.start()
 @app.route("/")
 def home():
     return agent1.data;
+@app.route("/order_book")
+def order_nook():
+    return agent2.data;
 
 @app.route("/add_symbol")
 def form_page():
@@ -93,7 +98,7 @@ def remove_symbol():
 @app.route("/stop_watcher")
 def stop_watcher():
     global thread_running, watcher_thread
-    
+    stop_socket()
     if not thread_running:
         return "Watcher already stopped"
 

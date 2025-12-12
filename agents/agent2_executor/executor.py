@@ -12,6 +12,9 @@ from core.Orderbook.orderbook_delta import fetch_orderbook as get_delta_orderboo
 from core.Placeorder.Coindcx_placeorder import place_dcx_order 
 from core.Placeorder.Delta_placeorder import place_delta_order 
 
+data = {
+    "demo":"gautam"
+}
 def start_executor_thread(event):
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
@@ -76,14 +79,16 @@ async def run_order_executor(event):
         delta_size = abs(delta_size)
         delta_args = (sym_id, delta_size, delta_side, "market_order", 0.01)
         dcx_args = (coindcx_side, symbol, "market_order", 0.01, coindcx_qty, coindcx_leverage)
-
+        data["coindcx_arg"] = dcx_args
+        data["delta_arg"] = delta_args
         delta_task = asyncio.to_thread(place_delta_order, *delta_args)
         dcx_task = asyncio.to_thread(place_dcx_order, *dcx_args)
 
         delta_result, dcx_result = await asyncio.gather(delta_task,dcx_task)
 
-        print("Delta Order Result:", delta_result)
-        print("CoinDCX Order Result:", dcx_result)
+        data["coindcx_order"] = dcx_result
+        data["delta_order"] = delta_result
+        print(data)
         
         
     except Exception as e:
