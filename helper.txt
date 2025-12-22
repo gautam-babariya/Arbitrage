@@ -10,10 +10,10 @@ cd ~/myflaskapp/Arbitrage
 source ~/myflaskapp/venv/bin/activate
 python3 main.py 
 
-sudo systemctl start myflaskapp
-sudo systemctl restart myflaskapp
-sudo systemctl stop myflaskapp
-sudo systemctl status myflaskapp
+sudo systemctl start gunicorn
+sudo systemctl restart gunicorn
+sudo systemctl stop gunicorn
+sudo systemctl status gunicorn
 
 sudo systemctl restart nginx
 sudo systemctl start nginx
