@@ -58,6 +58,7 @@ def run(event):
                         
                         trading_collection.delete_one({"symbol": sym})
                         del symbole_list[sym]
+                        del data[sym]
         # for datu in data.values():
         #     print(datu)
         time.sleep(1) 
