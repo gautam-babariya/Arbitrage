@@ -20,3 +20,8 @@ sudo systemctl start nginx
 sudo systemctl stop nginx
 sudo systemctl status nginx
 sudo nginx -t
+
+screen -S myflaskapp   create new screen
+ctrl + a then d   detach
+screen -r myflaskapp  open screen
+screen -ls   all screen

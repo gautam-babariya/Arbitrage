@@ -34,13 +34,14 @@ def check_data():
     return result
         
 def run(event):
+    global data
+    data = {}
     symbole_list = check_data()
     if not symbole_list:
         print("Stopping watcher...")
         stop_socket()
         return 
     start_socket(symbole_list)
-    
     while not event.is_set():
         symbols =  list(symbole_list.keys())
         for sym in symbols:
